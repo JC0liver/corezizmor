@@ -3,7 +3,7 @@ name: Zizmor GitHub Actions security analysis
 # Audits the repository's GitHub Actions workflows with zizmor, fails on
 # actionable findings, and publishes them to GitHub Code scanning.
 
-on:
+"on":
   push:
     branches:
       - dev

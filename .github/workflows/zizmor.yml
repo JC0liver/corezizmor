@@ -2,7 +2,8 @@ name: Zizmor GitHub Actions security analysis
 
 # Audits the repository's GitHub Actions workflows with zizmor, fails on
 # actionable findings, and publishes them to GitHub Code scanning.
-
+#
+# yamllint disable-line rule:truthy
 on:
   push:
     branches:

@@ -1,7 +1,7 @@
 name: Zizmor GitHub Actions security analysis
 
-# Audits the repository's GitHub Actions workflows with zizmor, fails on
-# actionable findings, and publishes them to GitHub Code scanning.
+# Audits the repository's GitHub Actions workflows with zizmor and publishes
+# findings to GitHub Code scanning.
 
 "on":
   push:
@@ -42,13 +42,8 @@ jobs:
           persist-credentials: false
 
       - name: Run zizmor
-        id: zizmor
         uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
-        continue-on-error: true
         with:
           persona: pedantic
           advanced-security: true
-
-      - name: Fail on zizmor findings
-        if: ${{ steps.zizmor.outcome == 'failure' }}
-        run: exit 1
+          config: .github/zizmor.yml

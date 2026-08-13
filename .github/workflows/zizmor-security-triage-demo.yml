@@ -1,0 +1,17 @@
+name: Zizmor security triage demonstration
+
+"on":
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scanner-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Use an unpinned action
+        uses: actions/checkout@main
+
+      - name: Expand untrusted input in a shell command
+        run: echo "${{ github.event.inputs.untrusted_value }}"

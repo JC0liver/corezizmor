@@ -1,0 +1,19 @@
+name: Zizmor vulnerable test
+
+"on":
+  workflow_dispatch:
+    inputs:
+      message:
+        description: Untrusted test input
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  demonstrate-template-injection:
+    name: Demonstrate template injection
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use untrusted input
+        run: echo "${{ inputs.message }}"

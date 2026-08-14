@@ -1,7 +1,7 @@
 name: Zizmor GitHub Actions security analysis
 
 # Audits the repository's GitHub Actions workflows with zizmor, publishes
-# findings to GitHub Code scanning, and enforces the pre-commit policy.
+# all findings to GitHub Code scanning, and blocks medium and high findings.
 
 "on":
   push:
@@ -31,6 +31,7 @@ jobs:
   zizmor:
     name: Check GitHub Actions workflows (code scanning)
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     permissions:
       contents: read # To check out the repository
       security-events: write # To upload the SARIF results to code scanning
@@ -47,12 +48,14 @@ jobs:
           persona: pedantic
           advanced-security: true
           config: .github/zizmor.yml
+          version: 1.29.0
 
-      - name: Enforce zizmor policy
-        uses: j178/prek-action@5337cb91e0fa35a7ff31b9ca345126d8bbbcdf16 # v2.0.6
+      - name: Block medium and high findings
+        uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
         with:
-          extra-args: >-
-            --all-files
-            zizmor
-            --
-            --min-severity=medium
+          persona: pedantic
+          advanced-security: false
+          annotations: true
+          config: .github/zizmor.yml
+          min-severity: medium
+          version: 1.29.0

@@ -1,3 +1,4 @@
+# Generated lock workflows are excluded from enforcement.
 rules:
   anonymous-definition:
     ignore:

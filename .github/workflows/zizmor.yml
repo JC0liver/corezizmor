@@ -56,6 +56,7 @@ jobs:
           persona: pedantic
           advanced-security: false
           annotations: true
-          config: .github/zizmor.yml
+          config: .github/zizmor-enforce.yml
+          collect: workflows
           min-severity: medium
           version: 1.29.0

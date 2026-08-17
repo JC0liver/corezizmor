@@ -1,0 +1,2 @@
+Temporary unrelated-file validation for split zizmor jobs.
+

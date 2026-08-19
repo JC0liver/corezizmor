@@ -1,0 +1,15 @@
+name: Clean zizmor validation
+
+"on":
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  validate:
+    name: Validate clean workflow
+    runs-on: ubuntu-24.04
+    permissions: {}
+    steps:
+      - name: Emit deterministic message
+        run: echo "Clean workflow validation"

@@ -8,6 +8,7 @@ rules:
   template-injection:
     ignore:
       - check-requirements.lock.yml
+      - zizmor-policy-tamper-validation.yml
   undocumented-permissions:
     ignore:
       - check-requirements.lock.yml

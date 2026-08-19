@@ -1,0 +1,14 @@
+name: Temporary clean zizmor validation
+
+"on":
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  validate:
+    name: Validate clean workflow
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Confirm fixture
+        run: echo "Clean zizmor validation fixture"

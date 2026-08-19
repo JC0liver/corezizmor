@@ -1,0 +1,19 @@
+name: Temporary vulnerable zizmor validation
+
+"on":
+  workflow_dispatch:
+    inputs:
+      message:
+        description: Message to print
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  vulnerable:
+    name: Exercise template injection
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Print untrusted input
+        run: echo "${{ inputs.message }}"

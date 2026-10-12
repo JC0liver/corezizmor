@@ -1,8 +1,15 @@
 on: push
 jobs:
-  test:
+  control:
     if: >
-      ${{ false }}
+      ${{ true }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "this should never run"
+      - run: echo "should run"
+  compound-false:
+    if: >
+      ${{ github.event_name != 'push' || github.repository_id == 0 &&
+      (!(false)) }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "should NOT run"
